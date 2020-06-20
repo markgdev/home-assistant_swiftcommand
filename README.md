@@ -7,7 +7,7 @@ cp custom_components/swiftcommand /path/to/config/custom_components/
 ```
 
 ### Get your caravan's asset id from the swift command webpage url.
-Navigate to the remote access page on the swift command webpage in your browser.
+Navigate to the remote access page on the swift command webpage in your browser. The assetid is the number at the end of the URL in the address bar.
 
 ![Asset ID](https://github.com/markgdev/home-assistant_swiftcommand/raw/master/images/assetid.png)
 
