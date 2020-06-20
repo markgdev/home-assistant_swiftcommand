@@ -1,7 +1,6 @@
 from homeassistant.core import callback
 from homeassistant.helpers.entity import Entity
 
-# from homeassistant.components.sensor import PLATFORM_SCHEMA
 
 import logging
 import asyncio
@@ -25,8 +24,6 @@ cookie = '__RequestVerificationToken=m5YHWkYuk0ae5bdmH9teGMeM5mXzsJDOcFiCqmwBmG1
 
 @asyncio.coroutine
 def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
-    _LOGGER.warning("In SwiftCommand sensor setup")
-    # _LOGGER.info(config)
     swiftcommand = SwiftCommand(hass, config)
     async_add_entities([swiftcommand], True)
     return True
@@ -37,7 +34,6 @@ class SwiftCommand(Entity):
     def __init__(self, hass, config):
         """Initialize the sensor."""
         self._state = None
-        # _LOGGER.info(config)
         self._email = config.get("email")
         self._password = config.get("password")
         self._assetid = config.get("assetid")
@@ -46,9 +42,6 @@ class SwiftCommand(Entity):
                 '__RequestVerificationToken': '0Vz0de7tVuXAeCqanchIILRrKDdbAWezSMUceAEFpRl9fPDp0aoj2FY88Ejmq7K74svUwSRlmJyhE9kFWbTYVHjIe4JIEgq5cYb1KStF2Uo1',
                 'RememberMe': 'false'}
         
-        # self._carbon_intensity = Regional()
-        # self._postcode = "EX39"
-        # self._hass = hass
         self._attributes = {}
         _LOGGER.warning("Setting up SwiftCommand")
 
@@ -113,10 +106,4 @@ class SwiftCommand(Entity):
             model = vehicle["Model"]
             attribs = {"latitude": loc_lat, "longitude": loc_long, "time": loc_time, "voltage": voltage_unit, "temp": temp_c, "van_serial": Van_Serial_Number, "make": make, "model": model, "entity_picture": "/local/caravan.jpg"}
             self._attributes = attribs
-            print(json.dumps(attribs, indent=4))
             self._state = voltage
-
-
-
-        # print(text)
-        # self._state = text
